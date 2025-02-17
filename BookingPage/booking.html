@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="booking_style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Book a seat</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div class="nav-container">
+      <div class="app-name">
+        <h1>BookIT</h1>
+      </div>
+
+      <div class="menu-items">
+        <a href="../HomePage/home.html"> <h1 class="item">Home</h1></a>
+        <h1 class="item">Find Locations</h1>
+        <h1 class="item">Login</h1>
+      </div>
+    </div>
+
+    <!-- Location Main Details-->
+
+    <div class="details-container">
+      <div class="location-info">
+        <div class="name">Music Pub</div>
+        <div class="address">Piața Mică 23, Sibiu 550182</div>
+      </div>
+      <div class="seats-section">
+        <div class="total">Total seats: 100</div>
+        <div class="available">Available: 50</div>
+      </div>
+    </div>
+
+    <!-- Booking Section -->
+
+    <div class="book-container">
+      <div class="location-photo">
+        <img src="../Images/music-pub.png" alt="Music Pub" />
+      </div>
+
+      <div class="book-section">
+        <div class="booking-form">
+          <div>
+            <h2>Select date</h2>
+            <input type="date" name="date" />
+          </div>
+          <div>
+            <h2>Seats</h2>
+            <input
+              type="text"
+              name="seats"
+              placeholder="Choose number of seats"
+            />
+          </div>
+          <div>
+            <h2>Time from</h2>
+            <input type="time" name="timeTo" placeholder="Choose time" />
+          </div>
+          <div>
+            <h2>Time to</h2>
+            <input type="time" name="timeTo" placeholder="Choose time" />
+          </div>
+        </div>
+
+        <button>Book seat</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <h1 id="copyright">&copy; BookIT SRL</h1>
+      <h1>All rights reserved</h1>
+    </div>
+  </body>
+</html>

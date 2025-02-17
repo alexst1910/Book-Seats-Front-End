@@ -1,0 +1,212 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 90px;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.app-name {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  width: 180px;
+  margin-left: 50px;
+}
+
+.item {
+  padding: 15px 15px;
+  font-size: 1.3rem;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.carousel-container {
+  width: 100vw;
+  height: 400px;
+  margin: 0;
+  position: relative;
+}
+
+.carousel-container img {
+  width: 100vw;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.carousel-text {
+  position: absolute;
+  color: white;
+  bottom: 200px;
+  left: 50px;
+  font-size: 2rem;
+}
+
+.section-text {
+  display: block;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.section-text h1 {
+  color: black;
+  font-size: 1.6rem;
+}
+
+.locations-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 100px;
+  margin-left: 50px;
+  flex-wrap: wrap;
+}
+
+.location-card {
+  width: 230px;
+  height: 300px;
+  /* margin: 0px 50px 50px 50px; */
+  margin-bottom: 50px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.location-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  filter: brightness(50%);
+  border-radius: 15px;
+}
+
+.location-card h1 {
+  position: absolute;
+  bottom: 200px;
+  left: 20px;
+  color: white;
+  font-size: 2rem;
+}
+
+#voodoo {
+  top: 5px;
+}
+
+#music-pub {
+  top: 10px;
+}
+
+#twenty {
+  top: 10px;
+}
+
+#geea {
+  top: 10px;
+}
+
+.book-button {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  width: 80%;
+  height: 15%;
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 150px;
+  background-color: black;
+  padding-top: 20px;
+}
+
+.footer h1 {
+  font-size: 1rem;
+  color: white;
+}
+
+#copyright {
+  font-size: 1.3rem;
+}
+
+#message {
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 658px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+  .carousel-container {
+    margin-top: 250px;
+  }
+
+  .menu-items {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+
+  .item {
+    padding: 0;
+  }
+
+  .app-name {
+    margin-left: 30px;
+  }
+
+  .section-text {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .locations-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 692px) {
+  .carousel-text {
+    top: 50px;
+  }
+}
+
+@media screen and (max-width: 337px) {
+  .carousel-container {
+    height: 550px;
+  }
+
+  .carousel-container img {
+    height: 550px;
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Booking App</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <div class="nav-container">
+      <div class="app-name">
+        <h1>BookIT</h1>
+      </div>
+
+      <div class="menu-items">
+        <h1 class="item">Home</h1>
+        <h1 class="item">Find Locations</h1>
+        <a href="../LoginPage/login.html"><h1 class="item">Login</h1></a>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+
+    <div class="carousel-container">
+      <img src="../Images/carousel.png" alt="carousel" />
+
+      <div class="carousel-text">
+        Reserve your spot now! <br />
+        Explore top restaurants and venues near you and book your seats
+        instantly.
+      </div>
+    </div>
+
+    <!-- Locations Section -->
+
+    <div class="section-text">
+      <h1>Popular locations</h1>
+    </div>
+
+    <div class="locations-container">
+      <div class="location-card">
+        <a href="../BookingPage/booking.html"
+          ><img src="../Images/music-pub.png" alt="Music Pub"
+        /></a>
+        <h1 class="location-title" id="music-pub">Music Pub</h1>
+        <a href="../BookingPage/booking.html"
+          ><button class="book-button" type="button">Book a seat</button></a
+        >
+      </div>
+
+      <div class="location-card">
+        <img src="../Images/voodoo.png" alt="Voodoo" />
+        <h1 class="location-title" id="voodoo">Voodoo Billiard & Lounge</h1>
+        <button class="book-button" type="button">Book a seat</button>
+      </div>
+
+      <div class="location-card">
+        <img src="../Images/twenty-pizza.png" alt="Twenty Pizza" />
+        <h1 class="location-title" id="twenty">
+          Twenty <br />
+          Pizza
+        </h1>
+        <button class="book-button" type="button">Book a seat</button>
+      </div>
+
+      <div class="location-card">
+        <img src="../Images/geea.png" alt="Geea Caffe" />
+        <h1 class="location-title" id="geea">Geea Caffe</h1>
+        <button class="book-button" type="button">Book a seat</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer">
+      <h1 id="copyright">&copy; BookIT SRL</h1>
+      <h1 id="message">All rights reserved</h1>
+    </div>
+  </body>
+</html>
