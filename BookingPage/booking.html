@@ -29,49 +29,50 @@
 
     <!-- Location Main Details-->
 
-    <div class="details-container">
-      <div class="location-info">
+    <div class="details-container" id="details-container">
+      <!--<div class="location-info">
         <div class="name">Music Pub</div>
         <div class="address">Piața Mică 23, Sibiu 550182</div>
       </div>
       <div class="seats-section">
         <div class="total">Total seats: 100</div>
         <div class="available">Available: 50</div>
-      </div>
+      </div>-->
     </div>
 
     <!-- Booking Section -->
 
     <div class="book-container">
       <div class="location-photo">
-        <img src="../Images/music-pub.png" alt="Music Pub" />
+        <!--<img src="../Images/music-pub.png" alt="Music Pub" />-->
       </div>
 
       <div class="book-section">
-        <div class="booking-form">
-          <div>
-            <h2>Select date</h2>
-            <input type="date" name="date" />
+        <form id="form">
+          <div class="booking-form">
+            <div>
+              <h2>Select date</h2>
+              <input type="date" name="date" />
+            </div>
+            <div>
+              <h2>Seats</h2>
+              <input
+                type="text"
+                name="seats"
+                placeholder="Choose number of seats"
+              />
+            </div>
+            <div>
+              <h2>Time from</h2>
+              <input type="time" name="timeFrom" placeholder="Choose time" />
+            </div>
+            <div>
+              <h2>Time to</h2>
+              <input type="time" name="timeTo" placeholder="Choose time" />
+            </div>
+            <input type="submit" form="form" class="button" value="Book seat"></input>
           </div>
-          <div>
-            <h2>Seats</h2>
-            <input
-              type="text"
-              name="seats"
-              placeholder="Choose number of seats"
-            />
-          </div>
-          <div>
-            <h2>Time from</h2>
-            <input type="time" name="timeTo" placeholder="Choose time" />
-          </div>
-          <div>
-            <h2>Time to</h2>
-            <input type="time" name="timeTo" placeholder="Choose time" />
-          </div>
-        </div>
-
-        <button>Book seat</button>
+        </form>
       </div>
     </div>
 
@@ -80,5 +81,39 @@
       <h1 id="copyright">&copy; BookIT SRL</h1>
       <h1>All rights reserved</h1>
     </div>
+
+    <script src="../Js/booking.js"></script>
+
+    <script>
+      
+      const form = document.getElementById("form");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = {
+          date: formData.get("date"),
+          seats: formData.get("seats"),
+          timeTo: formData.get("timeTo"),
+          timeFrom: formData.get("timeFrom"),
+        };
+
+        fetch(apiUrl + "/addBooking", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+    </script>
   </body>
 </html>

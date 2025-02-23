@@ -26,10 +26,17 @@ const displayVenues = (venues) => {
           ><img src=${coverUrl} alt="Music Pub"
         /></a>
         <h1 class="location-title" id="music-pub">${venue.name}</h1>
-        <a href="../BookingPage/booking.html"
-          ><button class="book-button" type="button">Book a seat</button></a
+        <a href="../BookingPage/booking.html?venueId=${venue.venueId}"
+          ><button class="book-button" type="button"   
+          >Book a seat</button></a
         >
       </div>`;
-    locationsContainer.insertAdjacentHTML("beforeend", element);
+    locationsContainer.innerHTML += element;
   });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const venueId = urlParams.get("venueId");
+  if (venueId) {
+    displayVenueInfo(venueId);
+  }
 };
