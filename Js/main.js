@@ -13,6 +13,8 @@ addEventListener("DOMContentLoaded", (event) => {
       console.error("error:", error);
     });
 });
+
+// displaying the venues from the database
 const displayVenues = (venues) => {
   const locationsContainer = document.getElementById("locations-container");
 
