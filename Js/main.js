@@ -17,7 +17,6 @@ addEventListener("DOMContentLoaded", (event) => {
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 if (user) {
-  const element = document.getElementById("login-item");
   const userName = document.getElementById("item");
   userName.innerHTML = "";
   userName.innerHTML += "Welcome " + user.username;
