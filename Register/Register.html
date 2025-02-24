@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="register_style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="nav-container">
+      <div class="app-name">
+        <h1>BookIT</h1>
+      </div>
+
+      <!-- NavBar -->
+
+      <div class="menu-items">
+        <h1 class="item">Home</h1>
+        <h1 class="item">Find Locations</h1>
+        <h1 class="item">Login</h1>
+      </div>
+    </div>
+
+    <!-- Form -->
+
+    <div class="form-container">
+      <div class="text">Register</div>
+
+      <div class="form">
+        <!-- <div class="icon">
+          <i class="fa-regular fa-user user"></i>
+        </div>-->
+        <form action class="form-inputs" id="form">
+          <label for="firstName">Enter first name</label>
+          <input type="text" name="firstName" placeholder="Enter first" />
+          <label for="lastName">Enter last name</label>
+          <input type="text" name="lastName" placeholder="Enter last name" />
+          <label for="username">Enter username</label>
+          <input type="text" name="username" placeholder="Enter username" />
+          <label for="email">Enter email</label>
+          <input type="text" name="email" placeholder="email" />
+          <label for="password">Enter password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter password"
+          />
+
+          <input type="submit" name="submit" placeholder="Submit" id="submit" />
+        </form>
+      </div>
+    </div>
+    <!--Footer-->
+
+    <div class="footer">
+      <h1 id="copyright">&copy; BookIT SRL</h1>
+      <h1>All rights reserved</h1>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const apiUrl = "http://localhost:8080";
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(form);
+          const data = {
+            firstName: formData.get("firstName"),
+            lastName: formData.get("lastName"),
+            username: formData.get("username"),
+            email: formData.get("email"),
+            password: formData.get("password"),
+          };
+
+          fetch(apiUrl + "/registerUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              sessionStorage.setItem("user", JSON.stringify(data.user));
+              window.location.href = "../HomePage/home.html";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+
+        const loggedInUser = sessionStorage.getItem("user");
+        if (loggedInUser) {
+          window.location.href = "../HomePage/home.html";
+        }
+      });
+    </script>
+  </body>
+</html>

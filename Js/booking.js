@@ -29,9 +29,6 @@ function displayVenueInfo(venueId) {
     const coverUrl = `http://localhost:8080${venue.cover}`;
     const venueCover = document.getElementById("location-photo");
 
-    console.log(infoContainer);
-    console.log(venueCover);
-
     const firstElement = ` <div class="location-info">
               <div class="name">${venue.name}</div>
               <div class="address">${venue.address}</div>
@@ -46,3 +43,40 @@ function displayVenueInfo(venueId) {
     venueCover.insertAdjacentHTML("beforeend", secondElement);
   }
 }
+
+const form = document.getElementById("form");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
+  if (user) {
+    const userName = document.getElementById("item");
+    userName.innerHTML = "";
+    userName.innerHTML += user.username;
+  }
+
+  const formData = new FormData(form);
+  const data = {
+    date: formData.get("date"),
+    seats: formData.get("seats"),
+    timeTo: formData.get("timeTo"),
+    timeFrom: formData.get("timeFrom"),
+  };
+
+  fetch(apiUrl + "/submitBooking", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});

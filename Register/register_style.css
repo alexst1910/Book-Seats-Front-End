@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 90px;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.app-name {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  width: 180px;
+  margin-left: 50px;
+}
+
+.item {
+  padding: 15px 15px;
+  font-size: 1.3rem;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.text {
+  font-size: 2rem;
+  padding-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 600px;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding-top: 50px;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 300px;
+  height: 40px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+#password {
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 0.9rem;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.icon {
+  height: 110px;
+  width: 80px;
+  border-radius: 50%;
+  border: 2px solid black;
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.user {
+  position: absolute;
+  font-size: 40px;
+  left: 20px;
+  top: 15px;
+}
+
+p {
+  font-size: 0.7rem;
+  padding-left: 5px;
+  padding-bottom: 30px;
+}
+
+#submit {
+  background-color: black;
+  color: white;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 150px;
+  background-color: black;
+  padding-top: 20px;
+}
+
+.footer h1 {
+  font-size: 1rem;
+  color: white;
+}
+
+#copyright {
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 658px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .menu-items {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+
+  .item {
+    padding: 0;
+  }
+
+  .app-name {
+    margin-left: 30px;
+  }
+
+  .form-container {
+    margin-top: 250px;
+  }
+}

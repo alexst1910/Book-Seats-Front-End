@@ -23,7 +23,7 @@
       <div class="menu-items">
         <a href="../HomePage/home.html"> <h1 class="item">Home</h1></a>
         <h1 class="item">Find Locations</h1>
-        <h1 class="item">Login</h1>
+        <h1 class="item" id="item">Login</h1>
       </div>
     </div>
 
@@ -84,36 +84,5 @@
 
     <script src="../Js/booking.js"></script>
 
-    <script>
-      
-      const form = document.getElementById("form");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        const data = {
-          date: formData.get("date"),
-          seats: formData.get("seats"),
-          timeTo: formData.get("timeTo"),
-          timeFrom: formData.get("timeFrom"),
-        };
-
-        fetch(apiUrl + "/addBooking", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Success:", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      });
-    </script>
   </body>
 </html>
