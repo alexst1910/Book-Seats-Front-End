@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  const loggedInUser = sessionStorage.getItem("user");
-  if (loggedInUser) {
-    window.location.href = "../HomePage/home.html";
-  }
+  // const loggedInUser = sessionStorage.getItem("user");
+  // if (loggedInUser) {
+  //   window.location.href = "../HomePage/home.html";
+  // }
 });

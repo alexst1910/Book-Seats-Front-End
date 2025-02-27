@@ -26,7 +26,7 @@
 
       <div class="menu-items">
         <h1 class="item">Home</h1>
-        <h1 class="item">Find Locations</h1>
+        <h1 class="item">My bookings</h1>
         <h1 class="item">Login</h1>
       </div>
     </div>
@@ -85,18 +85,17 @@
             email: formData.get("email"),
             password: formData.get("password"),
           };
-
-          fetch(apiUrl + "/registerUser", {
+          fetch(apiUrl + "/user/addUser", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "application/json; charset=UTF-8",
             },
             body: JSON.stringify(data),
           })
             .then((response) => response.json())
             .then((data) => {
               console.log("Success:", data);
-              sessionStorage.setItem("user", JSON.stringify(data.user));
+              // sessionStorage.setItem("user", JSON.stringify(data.user));
               window.location.href = "../HomePage/home.html";
             })
             .catch((error) => {
@@ -104,10 +103,10 @@
             });
         });
 
-        const loggedInUser = sessionStorage.getItem("user");
-        if (loggedInUser) {
-          window.location.href = "../HomePage/home.html";
-        }
+        // const loggedInUser = sessionStorage.getItem("user");
+        // if (loggedInUser) {
+        //   window.location.href = "../HomePage/home.html";
+        // }
       });
     </script>
   </body>
