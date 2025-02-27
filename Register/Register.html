@@ -95,18 +95,13 @@
             .then((response) => response.json())
             .then((data) => {
               console.log("Success:", data);
-              // sessionStorage.setItem("user", JSON.stringify(data.user));
+              sessionStorage.setItem("user", JSON.stringify(data.user));
               window.location.href = "../HomePage/home.html";
             })
             .catch((error) => {
               console.error("Error:", error);
             });
         });
-
-        // const loggedInUser = sessionStorage.getItem("user");
-        // if (loggedInUser) {
-        //   window.location.href = "../HomePage/home.html";
-        // }
       });
     </script>
   </body>

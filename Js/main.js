@@ -14,13 +14,13 @@ addEventListener("DOMContentLoaded", (event) => {
     });
 });
 
-// const user = JSON.parse(sessionStorage.getItem("user"));
+const user = JSON.parse(sessionStorage.getItem("user"));
 
-// if (user) {
-//   const userName = document.getElementById("item");
-//   userName.innerHTML = "";
-//   userName.innerHTML += "Welcome " + user.username;
-// }
+if (user) {
+  const userName = document.getElementById("item");
+  userName.innerHTML = "";
+  userName.innerHTML += "Welcome " + user.username;
+}
 
 // displaying the venues from the database
 const displayVenues = (venues) => {
