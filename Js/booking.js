@@ -13,12 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function displayVenueInfo(venueId) {
-  fetch(apiUrl + `/getVenueById/${venueId}`)
+  fetch(apiUrl + `/venue/getVenueById/${venueId}`)
     .then((response) => {
       return response.json();
     })
     .then((venue) => {
-      venueInfo(venue);
+      console.log("venue: " + venue);
+
+      if (venue) {
+        venueInfo(venue);
+      } else {
+        console.log("venue not found");
+      }
     })
     .catch((error) => {
       console.error("error:", error);
@@ -38,6 +44,7 @@ function displayVenueInfo(venueId) {
               <div class="available">Available: ${venue.availableSeats}</div>
             </div>`;
 
+    infoContainer.innerHTML = " ";
     const secondElement = ` <img src=${coverUrl} alt=${venue.name} />`;
     infoContainer.insertAdjacentHTML("beforeend", firstElement);
     venueCover.insertAdjacentHTML("beforeend", secondElement);

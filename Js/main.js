@@ -42,9 +42,9 @@ const displayVenues = (venues) => {
     locationsContainer.innerHTML += element;
   });
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const venueId = urlParams.get("venueId");
-  if (venueId) {
-    displayVenueInfo(venueId);
-  }
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const venueId = urlParams.get("venueId");
+  // if (venueId) {
+  //   displayVenueInfo(venueId);
+  // }
 };
