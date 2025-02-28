@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+if (!user) {
+  const submit = document.querySelector(".button");
+  submit.classList.add("hide");
+}
 function displayVenueInfo(venueId) {
   fetch(apiUrl + `/venue/getVenueById/${venueId}`)
     .then((response) => {

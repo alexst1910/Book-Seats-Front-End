@@ -179,6 +179,10 @@ input {
   font-size: 1.3rem;
 }
 
+.hide {
+  display: none;
+}
+
 @media screen and (max-width: 658px) {
   .nav-container {
     flex-direction: column;
