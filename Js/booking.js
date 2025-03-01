@@ -1,9 +1,9 @@
 const apiUrl = "http://localhost:8080";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const venueId = urlParams.get("venueId");
+const urlParams = new URLSearchParams(window.location.search);
+const venueId = urlParams.get("venueId");
 
+document.addEventListener("DOMContentLoaded", () => {
   if (venueId) {
     console.log("Venue ID:", venueId);
     displayVenueInfo(venueId);
@@ -78,7 +78,7 @@ form.addEventListener("submit", function (e) {
     timeFrom: formData.get("timeFrom"),
   };
 
-  fetch(apiUrl + "/submitBooking", {
+  fetch(apiUrl + `/booking/addBooking/${user.userId}/${venueId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
