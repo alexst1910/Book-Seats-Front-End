@@ -40,6 +40,22 @@ a {
   text-decoration: none;
 }
 
+.confirm-message {
+  height: 50px;
+  display: block;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 15px;
+}
+
+.confirm-message h3 {
+  padding-top: 10px;
+  padding-left: 10px;
+}
 .book-container {
   display: flex;
   justify-content: space-between;
@@ -79,6 +95,13 @@ a {
   background-color: black;
   color: white;
   border: none;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
 }
 
 .booking-form div {

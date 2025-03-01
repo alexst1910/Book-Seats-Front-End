@@ -58,6 +58,8 @@ function displayVenueInfo(venueId) {
 }
 
 const form = document.getElementById("form");
+const confirmation = document.querySelector(".confirm-message");
+confirmation.classList.add("hide");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -88,6 +90,7 @@ form.addEventListener("submit", function (e) {
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
+      confirmation.classList.remove("hide");
     })
     .catch((error) => {
       console.error("Error:", error);
