@@ -183,6 +183,11 @@ input {
   /* border: 1px solid black; */
 }
 
+.span {
+  font-size: 1.3rem;
+  color: black;
+}
+
 .footer {
   display: flex;
   flex-direction: column;

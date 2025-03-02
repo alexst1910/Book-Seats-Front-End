@@ -18,6 +18,7 @@ if (!user) {
   const submit = document.querySelector(".button");
   submit.classList.add("hide");
 }
+
 function displayVenueInfo(venueId) {
   fetch(apiUrl + `/venue/getVenueById/${venueId}`)
     .then((response) => {
@@ -47,7 +48,7 @@ function displayVenueInfo(venueId) {
             </div>
             <div class="seats-section">
               <div class="total">Total seats: ${venue.totalSeats}</div>
-              <div class="available">Available: ${venue.availableSeats}</div>
+              <div class="available">Available: <span class="span">${venue.availableSeats}</span></div>
             </div>`;
 
     infoContainer.innerHTML = " ";
@@ -55,6 +56,26 @@ function displayVenueInfo(venueId) {
     infoContainer.insertAdjacentHTML("beforeend", firstElement);
     venueCover.insertAdjacentHTML("beforeend", secondElement);
   }
+}
+
+function displayUpdatedAvailableSeats(venueId) {
+  fetch(apiUrl + `/venue/getVenueById/${venueId}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((venue) => {
+      console.log("venue: " + venue);
+
+      if (venue) {
+        const available = document.querySelector(".span");
+        available.innerHTML = venue.availableSeats;
+      } else {
+        console.log("update failed");
+      }
+    })
+    .catch((error) => {
+      console.error("error:", error);
+    });
 }
 
 const form = document.getElementById("form");
@@ -91,6 +112,7 @@ form.addEventListener("submit", function (e) {
     .then((data) => {
       console.log("Success:", data);
       confirmation.classList.remove("hide");
+      displayUpdatedAvailableSeats(venueId);
     })
     .catch((error) => {
       console.error("Error:", error);

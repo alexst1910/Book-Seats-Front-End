@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       password: formData.get("password"),
     };
 
-    fetch(apiUrl + "/login", {
+    fetch(apiUrl + "/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
