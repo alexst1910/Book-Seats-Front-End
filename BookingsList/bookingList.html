@@ -20,7 +20,7 @@
       </div>
 
       <div class="menu-items">
-        <h1 class="item">Home</h1>
+        <a href="../HomePage/home.html"><h1 class="item">Home</h1></a>
         <a href="../LoginPage/login.html" id="login-item"
           ><h1 class="item" id="item">Login</h1></a
         >
@@ -32,78 +32,13 @@
       <h1>My bookings</h1>
     </div>
 
-    <div class="bookings-list" id="bookings">
-      <div class="booking-item">
-        <div class="venue-cover">
-          <img src="../Images/music-pub.png" alt="music pub" />
-        </div>
-
-        <div class="booking-data">
-          <div class="booking-data-values">
-            <div class="booking-id">
-              <h2>booking # 303</h2>
-            </div>
-
-            <div class="data-grid">
-              <div>
-                <h4>date: &nbsp; 13-03-2025</h4>
-              </div>
-              <div>
-                <h4>time from: &nbsp; 16:00:00</h4>
-              </div>
-              <div>
-                <h4>time to: &nbsp; 19:00:00</h4>
-              </div>
-              <div>
-                <h4>seats: &nbsp; 6</h4>
-              </div>
-            </div>
-          </div>
-          <div class="crud-buttons">
-            <button class="crud">Update</button>
-            <button class="crud">Delete</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="booking-item">
-        <div class="venue-cover">
-          <img src="../Images/music-pub.png" alt="music pub" />
-        </div>
-
-        <div class="booking-data">
-          <div class="booking-data-values">
-            <div class="booking-id">
-              <h2>booking # 303</h2>
-            </div>
-
-            <div class="data-grid">
-              <div>
-                <h4>date: &nbsp; 13-03-2025</h4>
-              </div>
-              <div>
-                <h4>time from: &nbsp; 16:00:00</h4>
-              </div>
-              <div>
-                <h4>time to: &nbsp; 19:00:00</h4>
-              </div>
-              <div>
-                <h4>seats: &nbsp; 6</h4>
-              </div>
-            </div>
-          </div>
-          <div class="crud-buttons">
-            <button class="crud">Update</button>
-            <button class="crud">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="bookings-list" id="bookings"></div>
 
     <!-- Footer -->
     <div class="footer">
       <h1 id="copyright">&copy; BookIT SRL</h1>
       <h1 id="message">All rights reserved</h1>
     </div>
+    <script src="../BookingsList/bookinglist.js"></script>
   </body>
 </html>

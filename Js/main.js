@@ -41,10 +41,4 @@ const displayVenues = (venues) => {
       </div>`;
     locationsContainer.innerHTML += element;
   });
-
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const venueId = urlParams.get("venueId");
-  // if (venueId) {
-  //   displayVenueInfo(venueId);
-  // }
 };
