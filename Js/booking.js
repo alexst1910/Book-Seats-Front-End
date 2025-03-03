@@ -1,5 +1,6 @@
 const apiUrl = "http://localhost:8080";
 
+// search for the venueId parameter in the URL
 const urlParams = new URLSearchParams(window.location.search);
 const venueId = urlParams.get("venueId");
 
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const user = JSON.parse(sessionStorage.getItem("user"));
 
+// doesn't display the submit button if user doesn't exist
 if (!user) {
   const submit = document.querySelector(".button");
   submit.classList.add("hide");
@@ -58,6 +60,7 @@ function displayVenueInfo(venueId) {
   }
 }
 
+// updates the available seats on submit
 function displayUpdatedAvailableSeats(venueId) {
   fetch(apiUrl + `/venue/getVenueById/${venueId}`)
     .then((response) => {
@@ -111,6 +114,8 @@ form.addEventListener("submit", function (e) {
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
+
+      // display a message at submit
       confirmation.classList.remove("hide");
       displayUpdatedAvailableSeats(venueId);
     })

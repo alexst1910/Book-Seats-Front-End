@@ -1,11 +1,12 @@
 const apiUrl = "http://localhost:8080";
 
+// retrieves the user from the browser session
 const user = JSON.parse(sessionStorage.getItem("user"));
 
 if (user) {
   const userName = document.getElementById("item");
   userName.innerHTML = "";
-  userName.innerHTML += "Welcome " + user.username;
+  userName.innerHTML += user.username;
 }
 
 addEventListener("DOMContentLoaded", () => {
