@@ -47,7 +47,7 @@
           <div class="booking-form">
             <div>
               <h2>Select date</h2>
-              <input type="date" name="date" />
+              <input type="date" name="date" required/>
             </div>
             <div>
               <h2>Seats</h2>
@@ -55,15 +55,15 @@
                 type="text"
                 name="seats"
                 placeholder="Choose number of seats"
-              />
+              required/>
             </div>
             <div>
               <h2>Time from</h2>
-              <input type="time" name="timeFrom" placeholder="Choose time" />
+              <input type="time" name="timeFrom" placeholder="Choose time" required/>
             </div>
             <div>
               <h2>Time to</h2>
-              <input type="time" name="timeTo" placeholder="Choose time" />
+              <input type="time" name="timeTo" placeholder="Choose time" required/>
             </div>
             <div class="submit"><input type="submit" form="form" class="button" value="Book seat"></input></div>
             
