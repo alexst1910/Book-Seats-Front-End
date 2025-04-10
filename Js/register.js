@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    fetch(apiUrl + "/user/addUser", {
+    fetch(apiUrl + "/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -22,9 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
-        sessionStorage.setItem("user", JSON.stringify(data.user));
-        window.location.href = "../HomePage/home.html";
+        const token = data.token;
+        localStorage.setItem("jwt", token);
+        return fetch(apiUrl + "/user/current", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
+          .then((response) => response.json())
+          .then((user) => {
+            localStorage.setItem("user", JSON.stringify(user));
+            window.location.href = "../HomePage/home.html";
+          });
       })
       .catch((error) => {
         console.error("Error:", error);

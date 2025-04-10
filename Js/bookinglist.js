@@ -1,16 +1,29 @@
 const apiUrl = "http://localhost:8080";
 
 // retrieves the user from the browser session
-const user = JSON.parse(sessionStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("jwt");
 
 if (user) {
   const userName = document.getElementById("item");
   userName.innerHTML = "";
-  userName.innerHTML += user.username;
+  userName.innerHTML += "Log out";
+
+  userName.addEventListener("click", function () {
+    localStorage.clear();
+    window.location.href = "../HomePage/home.html";
+  });
+} else {
+  userName.innerHTML = "";
+  userName.innerHTML += "Log in";
 }
 
 addEventListener("DOMContentLoaded", () => {
-  fetch(apiUrl + `/user/usersBookings/${user.userId}`)
+  fetch(apiUrl + `/user/usersBookings/${user.userId}`, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
     .then((response) => {
       return response.json();
     })
@@ -26,6 +39,9 @@ addEventListener("DOMContentLoaded", () => {
 function deleteBooking(bookingId) {
   fetch(apiUrl + `/booking/deleteBookingById/${bookingId}/${user.userId}`, {
     method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
   })
     .then((response) => {
       return response.json();

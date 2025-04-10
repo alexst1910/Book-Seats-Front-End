@@ -13,7 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const user = JSON.parse(sessionStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("jwt");
+
+if (user) {
+  const userName = document.getElementById("item");
+  userName.innerHTML = "";
+  userName.innerHTML += "Log out";
+
+  userName.addEventListener("click", function () {
+    localStorage.clear();
+    window.location.href = "../HomePage/home.html";
+  });
+} else {
+  userName.innerHTML = "";
+  userName.innerHTML += "Log in";
+}
 
 // doesn't display the submit button if user doesn't exist
 if (!user) {
@@ -88,14 +103,6 @@ confirmation.classList.add("hide");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const user = JSON.parse(sessionStorage.getItem("user"));
-
-  if (user) {
-    const userName = document.getElementById("item");
-    userName.innerHTML = "";
-    userName.innerHTML += user.username;
-  }
-
   const formData = new FormData(form);
   const data = {
     date: formData.get("date"),
@@ -108,6 +115,7 @@ form.addEventListener("submit", function (e) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(data),
   })

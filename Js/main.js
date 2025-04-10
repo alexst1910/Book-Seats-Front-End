@@ -15,12 +15,20 @@ addEventListener("DOMContentLoaded", (event) => {
 });
 
 // takes the user from the browser session
-const user = JSON.parse(sessionStorage.getItem("user"));
-
+const user = JSON.parse(localStorage.getItem("user"));
+const userName = document.getElementById("item");
 if (user) {
-  const userName = document.getElementById("item");
   userName.innerHTML = "";
-  userName.innerHTML += "Welcome " + user.username;
+  userName.innerHTML += "Log out";
+
+  userName.addEventListener("click", function () {
+    localStorage.clear();
+    window.location.href = "../HomePage/home.html";
+  });
+} else {
+  userName.innerHTML = "";
+  userName.innerHTML += "Log in";
+  window.location.href = "../HomePage/home.html";
 }
 
 // displaying the venues from the database
@@ -31,8 +39,8 @@ const displayVenues = (venues) => {
     const coverUrl = `http://localhost:8080${venue.cover}`;
     const element = `
          <div class="location-card">
-        <a href="../BookingPage/booking.html"
-          ><img src=${coverUrl} alt="Music Pub"
+        <a href="../BookingPage/booking.html?venueId=${venue.venueId}"
+          ><img src=${coverUrl} alt=${venue.name}
         /></a>
         <h1 class="location-title" id="music-pub">${venue.name}</h1>
         <a href="../BookingPage/booking.html?venueId=${venue.venueId}"
