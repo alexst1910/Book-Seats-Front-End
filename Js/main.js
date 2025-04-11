@@ -14,21 +14,26 @@ addEventListener("DOMContentLoaded", (event) => {
     });
 });
 
-// takes the user from the browser session
+// takes the user from the local storage
 const user = JSON.parse(localStorage.getItem("user"));
-const userName = document.getElementById("item");
-if (user) {
-  userName.innerHTML = "";
-  userName.innerHTML += "Log out";
+const button = document.getElementById("item");
+const element = document.querySelector(".welcome-message");
 
-  userName.addEventListener("click", function () {
+if (user) {
+  button.innerHTML = "";
+  button.innerHTML += "Log out";
+
+  const welcome = `<h1 class="item">Welcome ${user.username}</h1>`;
+  element.insertAdjacentHTML("beforeend", welcome);
+
+  setTimeout(() => {
+    element.innerHTML = " ";
+  }, 20000);
+
+  button.addEventListener("click", function () {
     localStorage.clear();
     window.location.href = "../HomePage/home.html";
   });
-} else {
-  userName.innerHTML = "";
-  userName.innerHTML += "Log in";
-  window.location.href = "../HomePage/home.html";
 }
 
 // displaying the venues from the database

@@ -15,19 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const user = JSON.parse(localStorage.getItem("user"));
 const token = localStorage.getItem("jwt");
+const button = document.getElementById("item");
 
 if (user) {
-  const userName = document.getElementById("item");
-  userName.innerHTML = "";
-  userName.innerHTML += "Log out";
+  button.innerHTML = "";
+  button.innerHTML += "Log out";
 
-  userName.addEventListener("click", function () {
+  button.addEventListener("click", function () {
     localStorage.clear();
     window.location.href = "../HomePage/home.html";
   });
-} else {
-  userName.innerHTML = "";
-  userName.innerHTML += "Log in";
 }
 
 // doesn't display the submit button if user doesn't exist
