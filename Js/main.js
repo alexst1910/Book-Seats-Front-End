@@ -40,7 +40,7 @@ if (user) {
 const displayVenues = (venues) => {
   const locationsContainer = document.getElementById("locations-container");
 
-  venues.forEach((venue, idx) => {
+  venues.forEach((venue) => {
     const coverUrl = `http://localhost:8080${venue.cover}`;
     const element = `
          <div class="location-card">

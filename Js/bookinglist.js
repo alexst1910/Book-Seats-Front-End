@@ -26,25 +26,32 @@ addEventListener("DOMContentLoaded", () => {
     })
     .then((data) => {
       displayBookingsList(data.bookings);
-      console.log(data.venue);
     })
     .catch((error) => {
       console.error("error:", error);
     });
 });
 
-function deleteBooking(bookingId) {
-  fetch(apiUrl + `/booking/deleteBookingById/${bookingId}/${user.userId}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  })
+function deleteBooking(bookingId, venueId) {
+  if (!venueId) {
+    console.error("Missing venueId for booking", bookingId);
+    return;
+  }
+  fetch(
+    apiUrl +
+      `/booking/deleteBookingById/${bookingId}/${user.userId}/${venueId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  )
     .then((response) => {
       return response.json();
     })
     .then(() => {
-      const element = document.querySelector(".booking-item");
+      const element = document.getElementById(`booking-${bookingId}`);
       element.classList.add("hide");
     })
     .catch((error) => {
@@ -55,7 +62,8 @@ function deleteBooking(bookingId) {
 function displayBookingsList(bookings) {
   const bookingsContainer = document.getElementById("bookings");
   bookings.forEach((booking) => {
-    const element = `<div class="booking-item">
+    console.log("Booking: " + booking.venue);
+    const element = `<div class="booking-item" id="booking-${booking.bookingId}">
         <div class="venue-cover">
           <img src="../Images/music-pub.png" alt="music pub" />
         </div>
@@ -83,7 +91,7 @@ function displayBookingsList(bookings) {
           </div>
           <div class="crud-buttons">
             <button class="crud">Update</button>
-            <button class="crud" onclick=deleteBooking(${booking.bookingId})>Delete</button>
+            <button class="crud" onclick="deleteBooking(${booking.bookingId}, ${booking.venue.venueId})">Delete</button>
           </div>
         </div>`;
     bookingsContainer.innerHTML += element;
