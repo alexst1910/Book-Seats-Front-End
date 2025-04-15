@@ -3,8 +3,11 @@ const apiUrl = "http://localhost:8080";
 // retrieves the user from the browser session
 const user = JSON.parse(localStorage.getItem("user"));
 const token = localStorage.getItem("jwt");
-
 const button = document.getElementById("item");
+const section = document.querySelector(".section-text");
+const message = `<h2 id="no-bookings-msg"> No bookings saved! </h2>`;
+section.insertAdjacentHTML("beforeend", message);
+
 if (user) {
   button.innerHTML = "";
   button.innerHTML += "Log out";
@@ -60,9 +63,8 @@ function deleteBooking(bookingId, venueId) {
 }
 
 function displayBookingsList(bookings) {
-  const bookingsContainer = document.getElementById("bookings");
   bookings.forEach((booking) => {
-    console.log("Booking: " + booking.venue);
+    const bookingsContainer = document.getElementById("bookings");
     const element = `<div class="booking-item" id="booking-${booking.bookingId}">
         <div class="venue-cover">
           <img src="../Images/music-pub.png" alt="music pub" />
@@ -94,6 +96,11 @@ function displayBookingsList(bookings) {
             <button class="crud" onclick="deleteBooking(${booking.bookingId}, ${booking.venue.venueId})">Delete</button>
           </div>
         </div>`;
+
+    const noBookings = document.getElementById("no-bookings-msg");
+    if (noBookings) {
+      noBookings.remove();
+    }
     bookingsContainer.innerHTML += element;
   });
 }

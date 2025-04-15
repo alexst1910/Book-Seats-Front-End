@@ -28,7 +28,7 @@ if (user) {
 
   setTimeout(() => {
     element.innerHTML = " ";
-  }, 20000);
+  }, 10000);
 
   button.addEventListener("click", function () {
     localStorage.clear();

@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const user = JSON.parse(localStorage.getItem("user"));
 const token = localStorage.getItem("jwt");
 const button = document.getElementById("item");
+const section = document.querySelector(".submit");
 
 if (user) {
   button.innerHTML = "";
@@ -29,6 +30,8 @@ if (user) {
 
 // doesn't display the submit button if user doesn't exist
 if (!user) {
+  const element = "<h4>You must be logged in to submit the booking</h4>";
+  section.insertAdjacentHTML("beforeend", element);
   const submit = document.querySelector(".button");
   submit.classList.add("hide");
 }
