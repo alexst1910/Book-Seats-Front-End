@@ -65,7 +65,9 @@ function deleteBooking(bookingId, venueId) {
 function displayBookingsList(bookings) {
   bookings.forEach((booking) => {
     const bookingsContainer = document.getElementById("bookings");
-    const element = `<div class="booking-item" id="booking-${booking.bookingId}">
+    const element = `<div class="booking-item" id="booking-${
+      booking.bookingId
+    }">
         <div class="venue-cover">
           <img src="../Images/music-pub.png" alt="music pub" />
         </div>
@@ -92,8 +94,12 @@ function displayBookingsList(bookings) {
             </div>
           </div>
           <div class="crud-buttons">
-            <button class="crud">Update</button>
-            <button class="crud" onclick="deleteBooking(${booking.bookingId}, ${booking.venue.venueId})">Delete</button>
+            <button class="crud" onclick='editBooking(${JSON.stringify(
+              booking
+            )})'>Update</button>
+            <button class="crud" onclick="deleteBooking(${booking.bookingId}, ${
+      booking.venue.venueId
+    })">Delete</button>
           </div>
         </div>`;
 
@@ -103,4 +109,10 @@ function displayBookingsList(bookings) {
     }
     bookingsContainer.innerHTML += element;
   });
+}
+
+function editBooking(booking) {
+  localStorage.setItem("editBooking", JSON.stringify(booking));
+  console.log("Success");
+  window.location.href = `../BookingPage/booking.html?venueId=${booking.venue.venueId}&edit=true`;
 }

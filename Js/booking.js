@@ -5,6 +5,20 @@ const urlParams = new URLSearchParams(window.location.search);
 const venueId = urlParams.get("venueId");
 
 document.addEventListener("DOMContentLoaded", () => {
+  const editData = localStorage.getItem("editBooking");
+
+  if (editData) {
+    const booking = JSON.parse(editData);
+    document.querySelector("[name='date']").value = booking.date;
+    document.querySelector("[name='timeFrom']").value = booking.timeFrom;
+    document.querySelector("[name='timeTo']").value = booking.timeTo;
+    document.querySelector("[name='seats']").value = booking.seats;
+
+    form.setAttribute("data-editing", "true");
+    form.setAttribute("data-booking-id", booking.bookingId);
+    form.setAttribute("data-venue-id", booking.venue.venueId);
+  }
+
   if (venueId) {
     console.log("Venue ID:", venueId);
     displayVenueInfo(venueId);
@@ -111,23 +125,54 @@ form.addEventListener("submit", function (e) {
     timeFrom: formData.get("timeFrom"),
   };
 
-  fetch(apiUrl + `/booking/addBooking/${user.userId}/${venueId}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
+  const isEditing = form.getAttribute("data-editing") === "true";
 
-      // display a message at submit
-      confirmation.classList.remove("hide");
-      displayUpdatedAvailableSeats(venueId);
+  if (isEditing) {
+    const bookingId = form.getAttribute("data-booking-id");
+    const venueId = form.getAttribute("data-venue-id");
+    const query = new URLSearchParams(data).toString();
+
+    fetch(
+      apiUrl +
+        `/booking/updateBooking/${bookingId}/${user.userId}/${venueId}?${query}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.removeItem("editBooking");
+        console.log("Success:", data);
+
+        // display a message at submit
+        confirmation.classList.remove("hide");
+        displayUpdatedAvailableSeats(venueId);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } else {
+    fetch(apiUrl + `/booking/addBooking/${user.userId}/${venueId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(data),
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+
+        // display a message at submit
+        confirmation.classList.remove("hide");
+        displayUpdatedAvailableSeats(venueId);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 });
