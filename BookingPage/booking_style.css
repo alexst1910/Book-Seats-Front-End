@@ -59,6 +59,23 @@ a {
   padding-top: 10px;
   padding-left: 10px;
 }
+
+.update-message {
+  height: 50px;
+  display: block;
+  background-color: black;
+  color: white;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 15px;
+}
+
+.update-message h3 {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
 .book-container {
   display: flex;
   justify-content: space-between;

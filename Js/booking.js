@@ -4,8 +4,24 @@ const apiUrl = "http://localhost:8080";
 const urlParams = new URLSearchParams(window.location.search);
 const venueId = urlParams.get("venueId");
 
+const user = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("jwt");
+const button = document.getElementById("item");
+const section = document.querySelector(".submit");
+const submit = document.querySelector(".button");
+const updateButton = document.getElementById("update");
+updateButton.classList.add("hide");
+
 document.addEventListener("DOMContentLoaded", () => {
   const editData = localStorage.getItem("editBooking");
+  const editParam = urlParams.get("edit") === "true";
+
+  if (editParam) {
+    updateButton.classList.remove("hide");
+    submit.classList.add("hide");
+  } else {
+    localStorage.removeItem("editBooking");
+  }
 
   if (editData) {
     const booking = JSON.parse(editData);
@@ -27,11 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const user = JSON.parse(localStorage.getItem("user"));
-const token = localStorage.getItem("jwt");
-const button = document.getElementById("item");
-const section = document.querySelector(".submit");
-
 if (user) {
   button.innerHTML = "";
   button.innerHTML += "Log out";
@@ -46,7 +57,7 @@ if (user) {
 if (!user) {
   const element = "<h4>You must be logged in to submit the booking</h4>";
   section.insertAdjacentHTML("beforeend", element);
-  const submit = document.querySelector(".button");
+
   submit.classList.add("hide");
 }
 
@@ -113,6 +124,8 @@ function displayUpdatedAvailableSeats(venueId) {
 const form = document.getElementById("form");
 const confirmation = document.querySelector(".confirm-message");
 confirmation.classList.add("hide");
+const updateConfirmation = document.querySelector(".update-message");
+updateConfirmation.classList.add("hide");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -148,7 +161,7 @@ form.addEventListener("submit", function (e) {
         console.log("Success:", data);
 
         // display a message at submit
-        confirmation.classList.remove("hide");
+        updateConfirmation.classList.remove("hide");
         displayUpdatedAvailableSeats(venueId);
       })
       .catch((error) => {
