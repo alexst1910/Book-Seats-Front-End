@@ -38,9 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error:", error);
       });
   });
-
-  // const loggedInUser = sessionStorage.getItem("user");
-  // if (loggedInUser) {
-  //   window.location.href = "../HomePage/home.html";
-  // }
 });
