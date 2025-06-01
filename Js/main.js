@@ -33,16 +33,16 @@ const displayVenues = (venues) => {
   venues.forEach((venue) => {
     const coverUrl = `http://localhost:8080${venue.cover}`;
 
-    if (user.role === "ADMIN") {
+    if (user && user.role === "ADMIN") {
       const adminElement = `
-           <div class="location-card"> 
+           <div class="location-card">
             <img src=${coverUrl} alt=${venue.name}/>
 
           <h1 class="location-title" id="music-pub">${venue.name}</h1>
-          
-            <button class="button" id="updateButton" type="button"   
+
+            <button class="button" id="updateButton" type="button"
             >Update venue</button>
-            <button class="button" id="deleteButton" type="button"   
+            <button class="button" id="deleteButton" type="button"
             >Delete venue</button>
 
         </div>`;
