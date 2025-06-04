@@ -49,6 +49,23 @@ a {
   justify-content: center;
 }
 
+.confirm-message {
+  height: 50px;
+  display: block;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 15px;
+}
+
+.confirm-message h3 {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
 .form-section {
   display: flex;
   justify-content: center;
@@ -106,4 +123,8 @@ label {
 
 #copyright {
   font-size: 1.3rem;
+}
+
+.hide {
+  display: none;
 }

@@ -69,7 +69,7 @@ function displayBookingsList(bookings) {
       booking.bookingId
     }">
         <div class="venue-cover">
-          <img src="../Images/music-pub.png" alt="music pub" />
+          <img src=${booking.venue.cover} alt="music pub" />
         </div>
 
         <div class="booking-data">

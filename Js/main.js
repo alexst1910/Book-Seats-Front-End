@@ -77,7 +77,7 @@ if (user) {
     homeButton.remove();
     listButton.remove();
 
-    const addVenue = `<a href="../Admin/addVenue.html"><h1 class="item" id="add-venue">Add Venue</h1></a>`;
+    const addVenue = `<a href="../Admin/admin.html"><h1 class="item" id="add-venue">Add Venue</h1></a>`;
     menuItems.insertAdjacentHTML("afterbegin", addVenue);
 
     section.removeChild(popular);
