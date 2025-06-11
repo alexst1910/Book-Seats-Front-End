@@ -14,6 +14,32 @@ addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// authentication via Google
+window.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get("token");
+
+  if (token) {
+    localStorage.setItem("jwt", token);
+
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    fetch(apiUrl + "/user/current", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then((user) => {
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log("Logged in via Google:", user);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
+  }
+});
+
 // takes the user from the local storage
 const user = JSON.parse(localStorage.getItem("user"));
 

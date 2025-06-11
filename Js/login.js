@@ -1,6 +1,13 @@
 const apiUrl = "http://localhost:8080";
 
+const errorMessage = document.querySelector(".login-error");
+errorMessage.classList.add("hide");
+
 document.addEventListener("DOMContentLoaded", function () {
+  const googleButton = document.getElementById("google-login");
+  googleButton.addEventListener("click", () => {
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+  });
   const form = document.querySelector(".form-inputs");
 
   form.addEventListener("submit", function (event) {
@@ -36,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error("Error:", error);
+        errorMessage.classList.remove("hide");
       });
   });
 });

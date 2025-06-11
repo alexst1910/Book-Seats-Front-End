@@ -35,7 +35,9 @@
 
     <div class="form-container">
       <div class="text">Login</div>
-
+      <div class="login-error">
+        <p>Login failed! Incorrect username or password!</p>
+      </div>
       <div class="form">
         <div class="icon">
           <i class="fa-regular fa-user user"></i>
@@ -54,6 +56,14 @@
             Don't have an account?
             <a href="../Register/Register.html">Register.</a>
           </p>
+          <p id="forGoogle">Or</p>
+          <button id="google-login" class="google-btn">
+            <img
+              src="https://developers.google.com/identity/images/g-logo.png"
+              alt="Google logo"
+            />
+            Sign in with Google
+          </button>
           <input type="submit" name="submit" value="Log In" id="submit" />
         </form>
       </div>

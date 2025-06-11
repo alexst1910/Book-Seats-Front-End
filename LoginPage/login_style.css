@@ -51,9 +51,29 @@ a {
   margin-bottom: 50px;
 }
 
+.login-error {
+  background-color: black;
+  color: white;
+  margin-bottom: 10px;
+  width: 400px;
+  border-radius: 10px;
+  height: 50px;
+}
+
+.login-error p {
+  padding-top: 10px;
+  padding-left: 12px;
+  margin: 0;
+  font-size: 1rem;
+}
+
 .text {
   font-size: 2rem;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
+}
+
+.hide {
+  display: none;
 }
 
 .form {
@@ -61,7 +81,7 @@ a {
   flex-direction: column;
   align-items: center;
   width: 400px;
-  height: 450px;
+  height: 500px;
   border: 2px solid black;
   border-radius: 15px;
 }
@@ -95,8 +115,8 @@ label {
   border-radius: 50%;
   border: 2px solid black;
   position: relative;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .user {
@@ -109,7 +129,35 @@ label {
 p {
   font-size: 0.7rem;
   padding-left: 5px;
-  padding-bottom: 30px;
+  margin-bottom: 0;
+}
+
+#forGoogle {
+  padding-bottom: 10px;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+  background-color: white;
+  color: #444;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.google-btn img {
+  height: 18px;
+}
+
+.google-btn:hover {
+  background-color: #f5f5f5;
 }
 
 #submit {

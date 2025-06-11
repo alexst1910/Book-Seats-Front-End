@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = "http://localhost:8080";
   const form = document.getElementById("form");
 
+  const googleButton = document.getElementById("google-login");
+  googleButton.addEventListener("click", () => {
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+  });
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
